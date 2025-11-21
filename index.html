@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesian Guitarist</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        canvas {
+            border: 3px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #f5f5f5;
+        }
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Young Indonesian Man Playing Guitar</h1>
+        <canvas id="canvas" width="600" height="700"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Background
+        const gradient = ctx.createLinearGradient(0, 0, 0, 700);
+        gradient.addColorStop(0, '#87CEEB');
+        gradient.addColorStop(1, '#E0F6FF');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 600, 700);
+
+        // Helper function for skin tone
+        function drawSkinTone() {
+            return '#C68642';
+        }
+
+        // Head
+        ctx.fillStyle = drawSkinTone();
+        ctx.beginPath();
+        ctx.ellipse(300, 180, 60, 75, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#8B5A2B';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Hair - black wavy hair
+        ctx.fillStyle = '#1a1a1a';
+        ctx.beginPath();
+        ctx.ellipse(300, 140, 70, 60, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Hair details - wavy texture
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 3;
+        for(let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.moveTo(250 + i * 20, 120);
+            ctx.quadraticCurveTo(255 + i * 20, 110, 260 + i * 20, 120);
+            ctx.stroke();
+        }
+
+        // Ears
+        ctx.fillStyle = drawSkinTone();
+        // Left ear
+        ctx.beginPath();
+        ctx.ellipse(245, 180, 15, 20, -0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        // Right ear
+        ctx.beginPath();
+        ctx.ellipse(355, 180, 15, 20, 0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Eyes
+        ctx.fillStyle = '#fff';
+        // Left eye
+        ctx.beginPath();
+        ctx.ellipse(280, 175, 15, 12, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        // Right eye
+        ctx.beginPath();
+        ctx.ellipse(320, 175, 15, 12, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Pupils
+        ctx.fillStyle = '#3d2817';
+        ctx.beginPath();
+        ctx.arc(280, 175, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(320, 175, 7, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eye highlights
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(282, 172, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(322, 172, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eyebrows
+        ctx.strokeStyle = '#1a1a1a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(265, 160);
+        ctx.quadraticCurveTo(280, 155, 295, 158);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(305, 158);
+        ctx.quadraticCurveTo(320, 155, 335, 160);
+        ctx.stroke();
+
+        // Nose
+        ctx.strokeStyle = '#8B5A2B';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(300, 185);
+        ctx.lineTo(295, 205);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(292, 207, 3, 0, Math.PI);
+        ctx.stroke();
+
+        // Mouth - smiling
+        ctx.strokeStyle = '#8B5A2B';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(300, 215, 20, 0.2, Math.PI - 0.2);
+        ctx.stroke();
+
+        // Neck
+        ctx.fillStyle = drawSkinTone();
+        ctx.fillRect(275, 250, 50, 40);
+        ctx.strokeStyle = '#8B5A2B';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(275, 250, 50, 40);
+
+        // Torso - wearing a batik-inspired shirt
+        ctx.fillStyle = '#8B4513';
+        ctx.beginPath();
+        ctx.moveTo(275, 290);
+        ctx.lineTo(200, 320);
+        ctx.lineTo(180, 500);
+        ctx.lineTo(420, 500);
+        ctx.lineTo(400, 320);
+        ctx.lineTo(325, 290);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#654321';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Batik pattern on shirt
+        ctx.fillStyle = '#D2691E';
+        for(let y = 300; y < 500; y += 30) {
+            for(let x = 200; x < 400; x += 30) {
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Left arm
+        ctx.fillStyle = drawSkinTone();
+        ctx.beginPath();
+        ctx.moveTo(200, 320);
+        ctx.lineTo(150, 400);
+        ctx.lineTo(130, 480);
+        ctx.lineTo(145, 485);
+        ctx.lineTo(165, 410);
+        ctx.lineTo(210, 330);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#8B5A2B';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Right arm
+        ctx.fillStyle = drawSkinTone();
+        ctx.beginPath();
+        ctx.moveTo(400, 320);
+        ctx.lineTo(450, 380);
+        ctx.lineTo(470, 450);
+        ctx.lineTo(455, 455);
+        ctx.lineTo(435, 390);
+        ctx.lineTo(390, 330);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Guitar body - acoustic guitar
+        ctx.fillStyle = '#8B4513';
+        ctx.beginPath();
+        ctx.ellipse(350, 450, 80, 100, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#654321';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Guitar sound hole
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(350, 450, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Sound hole decoration
+        ctx.strokeStyle = '#D2691E';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(350, 450, 35, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Guitar bridge
+        ctx.fillStyle = '#654321';
+        ctx.fillRect(340, 510, 50, 8);
+
+        // Guitar neck
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(280, 250, 30, 200);
+        ctx.strokeStyle = '#654321';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(280, 250, 30, 200);
+
+        // Guitar frets
+        ctx.strokeStyle = '#C0C0C0';
+        ctx.lineWidth = 1;
+        for(let i = 260; i < 440; i += 25) {
+            ctx.beginPath();
+            ctx.moveTo(280, i);
+            ctx.lineTo(310, i);
+            ctx.stroke();
+        }
+
+        // Guitar strings
+        ctx.strokeStyle = '#FFD700';
+        ctx.lineWidth = 1;
+        for(let i = 0; i < 6; i++) {
+            ctx.beginPath();
+            ctx.moveTo(285 + i * 4, 250);
+            ctx.lineTo(345 + i * 2, 420);
+            ctx.stroke();
+        }
+
+        // Guitar headstock
+        ctx.fillStyle = '#8B4513';
+        ctx.beginPath();
+        ctx.moveTo(280, 250);
+        ctx.lineTo(270, 200);
+        ctx.lineTo(285, 195);
+        ctx.lineTo(310, 195);
+        ctx.lineTo(325, 200);
+        ctx.lineTo(310, 250);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Tuning pegs
+        ctx.fillStyle = '#C0C0C0';
+        for(let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.arc(273, 210 + i * 12, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(322, 210 + i * 12, 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Left hand on guitar neck (fingers)
+        ctx.fillStyle = drawSkinTone();
+        ctx.beginPath();
+        ctx.ellipse(140, 480, 15, 8, Math.PI / 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Fingers on neck
+        for(let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.ellipse(290 + i * 3, 340 + i * 20, 8, 4, -Math.PI / 3, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Right hand strumming
+        ctx.fillStyle = drawSkinTone();
+        ctx.beginPath();
+        ctx.ellipse(460, 450, 12, 8, -Math.PI / 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Right hand fingers
+        for(let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.moveTo(460, 450);
+            ctx.lineTo(370 + i * 10, 445 + i * 8);
+            ctx.strokeStyle = drawSkinTone();
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+
+        // Musical notes floating
+        ctx.fillStyle = '#FF6B6B';
+        ctx.font = 'bold 30px Arial';
+        ctx.fillText('♪', 480, 380);
+        ctx.fillText('♫', 510, 420);
+        ctx.fillStyle = '#4ECDC4';
+        ctx.fillText('♪', 500, 350);
+        ctx.fillText('♫', 530, 400);
+
+        // Shadow under figure
+        ctx.fillStyle = 'rgba(0,0,0,0.2)';
+        ctx.beginPath();
+        ctx.ellipse(300, 680, 150, 15, 0, 0, Math.PI * 2);
+        ctx.fill();
+    </script>
+</body>
+</html>
